@@ -1,5 +1,12 @@
 package Personas;
 
+import Mascotas.MascotasPrincipal;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 public class Personaje {
     // Atributos Del Personaje Principal
     private int vida;
@@ -7,14 +14,35 @@ public class Personaje {
     private int estamina;
     private int velocidad;
     private int LvL;
+    private boolean tieneMascota;
+    private HashSet<MascotasPrincipal> Mascotas;
+
 
     //Contrusctor
+    public Personaje(int vida, int daño, int estamina, int velocidad, int LvL,boolean tieneMascota, HashSet<MascotasPrincipal> Mascotas){
+        this.vida = vida;
+        this.daño = daño;
+        this.estamina =  estamina;
+        this.velocidad = velocidad;
+        this.LvL = LvL;
+        this.tieneMascota = tieneMascota;
+        this.Mascotas = Mascotas;
+    }
+
+    //Constructor sin mascotas
     public Personaje(int vida, int daño, int estamina, int velocidad, int LvL){
         this.vida = vida;
         this.daño = daño;
         this.estamina =  estamina;
         this.velocidad = velocidad;
         this.LvL = LvL;
+        this.tieneMascota = false;
+        this.Mascotas = new HashSet();
+    }
+    //Añadir una mascota
+    public void añadirMascotas(MascotasPrincipal M){
+        Mascotas.add(M);
+        this.tieneMascota = true;
     }
 
     //Metodos
@@ -83,6 +111,21 @@ public class Personaje {
     public void setLvL(int LvL){
         this.LvL = LvL;
     }
+//get Y set de Macotas y Si tiene
+    public boolean getTieneMascota(){
+        return tieneMascota;
+    }
+    public void setTieneMascota(boolean tieneMascota){
+        this.tieneMascota = tieneMascota;
+    }
+
+    public HashSet<MascotasPrincipal> getMascotas() {
+        return Mascotas;
+    }
+    public void setMascotas(HashSet<MascotasPrincipal> Mascotas){
+        this.Mascotas = Mascotas;
+    }
+
 
 
 
