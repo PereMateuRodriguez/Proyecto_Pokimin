@@ -1,5 +1,6 @@
 import Mascotas.MascotasPrincipal;
 import Mascotas.*;
+import Personas.Malvados;
 import Personas.Personaje;
 
 import javax.annotation.processing.ProcessingEnvironment;
@@ -13,9 +14,12 @@ public class Main {
     public static void main(String[] args) {
         //Instanciamos el Personaje Principal
         Personaje principal = new Personaje(100, 5, 10, 2,1);
+        //instanciamos las mascotas
         Volador volta = new Volador("Volta", 50, 5, 5, 10, 1);
         Terrestre terre = new Terrestre("Terre", 150, 50, 3, 1, 5);
         Acuatico acua = new Acuatico("Acua", 1000, 100, 200, 100, 100);
+        //Instanciamos al enemigo
+        Malvados enemigo = new Malvados(150, 50, 15 );
         while (true) {
             //Nivel en el que se encuentra nuestro Personaje
             int LVL = 0;
@@ -44,7 +48,46 @@ public class Main {
             }
             //-----------------Matar----------------------------------
             if (Elecion.equals("a")) {
-                System.out.println("A");
+                //Tiene Mascota
+                if(principal.getTieneMascota()== true){
+                    //Tiene una Mascota
+                    if(principal.getMascotas().size() == 1){
+                        System.out.println(MatarEnemigo(enemigo,volta));
+                    }
+                    //Tiene 2 Mascotas
+                    else if (principal.getMascotas().size() == 2 ){
+                        //Volta tiene mas LvL
+                        if (volta.getLvLMascota() > terre.getLvLMascota()){
+                            System.out.println(MatarEnemigo(enemigo,volta));
+                        }
+                        //Terre Tiene mas LvL
+                        else{
+                            System.out.println(MatarEnemigo(enemigo,terre));
+                        }
+
+                    }
+                    //Tiene las tres Mascotas
+                    else{
+                        //Volta Tiene Mas LvL
+                        if (volta.getLvLMascota() > terre.getLvLMascota() && volta.getLvLMascota() > acua.getLvLMascota()
+                        ){
+                            System.out.println(MatarEnemigo(enemigo,volta));
+                        }
+                        //Terre Tiene Mas LvL
+                        else if(terre.getLvLMascota() > volta.getLvLMascota() && terre.getLvLMascota() > acua.getLvLMascota()){
+                            System.out.println(MatarEnemigo(enemigo,terre));
+                        }
+                        //Acua Tiene Mas LvL
+                        else{
+                            System.out.println(MatarEnemigo(enemigo,acua));
+                        }
+                    }
+                }
+                //No tiene Mascota
+                else{
+                    System.err.println("Error: No tiene ninguna mascota!");
+                }
+
             }
             //----------------Animal Fantastico--------------------------------
             else if (Elecion.equals("b")) {
@@ -90,18 +133,18 @@ public class Main {
                 }
                 //LVL >= 25
                 else{
-                    if (QuienHaMuerto(principal, terre) == true){
+                    if (QuienHaMuerto(principal, acua) == true){
                         principal.SonidoGanar();
                         // Elegir si quiere capturarlo
                         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-                        System.out.println("Quieres Capturar a la terre? \n a) SI \nCualquier otro valor) No");
+                        System.out.println("Quieres Capturar a Acua? \n a) SI \nCualquier otro valor) No");
 
                         Elecion = myObj.nextLine();  // Read user input
 
                         Elecion = Elecion.toLowerCase();
                         if (Elecion.equals("a")){
                             //Aqui lo convertiremos en un SET asi no se puede repetir la mascota
-                            principal.añadirMascotas(terre);
+                            principal.añadirMascotas(acua);
                         }
                     }
                     else{
@@ -191,6 +234,36 @@ public class Main {
             System.out.println(e);
         }
 
+    }
+    // Matar Enemeigos
+    public static String MatarEnemigo(Malvados enemigo, MascotasPrincipal volta){
+        String Ganar = "You: Lo sabia no hay nadie en este mundo que pueda conmigo";
+        String Perder= "You: Vuelve aqui" + volta.getNombreMascota() + ", sino moriras!!!";
+        if(enemigo.getVelocidadMalvado() < volta.getVelocidadMascota()){
+            //Primer golpe
+            enemigo.setVidaMalvado(enemigo.getVidaMalvado() - volta.getDañoMascota());
+            if (enemigo.getVelocidadMalvado() <= 0){
+                return Ganar;
+            }
+            //Segundo Golpe
+            volta.setVidaMascota(volta.getDañoMascota() - enemigo.getDañoMalvado());
+            if (volta.getVidaMascota() <= 0){
+                return Perder;
+            }
+        }
+        else{
+            //Primer Golpe
+            volta.setVidaMascota(volta.getDañoMascota() - enemigo.getDañoMalvado());
+            if (volta.getVidaMascota() <= 0){
+                return Perder;
+            }
+            //Segundo golpe
+            enemigo.setVidaMalvado(enemigo.getVidaMalvado() - volta.getDañoMascota());
+            if (enemigo.getVelocidadMalvado() <= 0){
+                return Ganar;
+            }
+        }
+        return Perder;
     }
 }
 
