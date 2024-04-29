@@ -3,6 +3,8 @@ package Mascotas;
 import javax.swing.plaf.synth.SynthTabbedPaneUI;
 
 abstract public class MascotasPrincipal {
+    private String Ataque1;
+    private String Ataque2;
     private String Nombre;
     private int vida;
     private int daño;
@@ -11,13 +13,15 @@ abstract public class MascotasPrincipal {
     private int LvL;
 
     //Constructor
-    public MascotasPrincipal(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL){
+    public MascotasPrincipal(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2){
         this.Nombre = Nombre;
         this.vida = vida;
         this.daño = daño;
         this.estamina = estamina;
         this.velocidad = velocidad;
         this.LvL = LvL;
+        this.Ataque1 = Ataque1;
+        this.Ataque2 = Ataque2;
     }
 
     //Metodos
@@ -26,7 +30,8 @@ abstract public class MascotasPrincipal {
     abstract public void sonido();
     //Sonido
     abstract public void SonidoMascota();
-
+    abstract  public void SonidoAtaque1();
+    abstract  public void SonidoAtaque2();
 
     //SET Y GET Nombre
     public String getNombreMascota(){
@@ -81,5 +86,11 @@ abstract public class MascotasPrincipal {
     public void setLvLMascota(int LvL){
         this.LvL = LvL;
     }
+
+    public String getAtaque1(){ return Ataque1; }
+    public void setAtaque1(String Ataque1){ this.Ataque1 = Ataque1;}
+
+    public String getAtaque2(){ return Ataque2; }
+    public void setAtaque2(String Ataque2){ this.Ataque2 = Ataque2;}
 
 }

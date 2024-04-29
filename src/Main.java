@@ -15,9 +15,9 @@ public class Main {
         //Instanciamos el Personaje Principal
         Personaje principal = new Personaje(100, 5, 10, 2,1);
         //instanciamos las mascotas
-        Volador volta = new Volador("Volta", 50, 5, 5, 10, 1);
-        Terrestre terre = new Terrestre("Terre", 150, 50, 3, 1, 5);
-        Acuatico acua = new Acuatico("Acua", 1000, 100, 200, 100, 100);
+        Volador volta = new Volador("Volta", 50, 5, 5, 10, 1, "Ataque Rapido" , "Ala de Acero");
+        Terrestre terre = new Terrestre("Terre", 150, 50, 3, 1, 5, "Ataque Latigo", "Raizes Duras");
+        Acuatico acua = new Acuatico("Acua", 1000, 100, 200, 100, 100, "Chorro Presion", "Cascada de HydroMuertos");
         //Instanciamos al enemigo
         Malvados enemigo = new Malvados(150, 50, 15 );
         while (true) {
@@ -26,20 +26,20 @@ public class Main {
             //Elecion del lo que quiere hacer
             String Elecion;
             while (true) {
-                Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+                Scanner myObj = new Scanner(System.in);  // Creamos esl objeto escaner
                 System.out.println("""
                     ----------------------------------
                                Que quieres hacer?
                                 
-                    a) Matar    b) Buscar un Animal Fantastico     c) Mirar estadistica    d) Entrenar      
+                    a) Matar        b) Buscar un Animal Fantastico    c) Mirar estadistica      d) Entrenar     e) Salir del Juego      
                             
                             """);
 
-                Elecion = myObj.nextLine();  // Read user input
+                Elecion = myObj.nextLine();
 
                 Elecion = Elecion.toLowerCase();
                 //Mirar si el dato de entrada tiene sentido sino repite la ejecucion
-                if (Elecion.equals("a") || Elecion.equals("b") || Elecion.equals("c") || Elecion.equals("d")) {
+                if (Elecion.equals("a") || Elecion.equals("b") || Elecion.equals("c") || Elecion.equals("d")|| Elecion.equals("e")) {
                     break;
                 } else {
                     System.err.println("Error: No has elegido una opcion valida\n");
@@ -48,6 +48,7 @@ public class Main {
             }
             //-----------------Matar----------------------------------
             if (Elecion.equals("a")) {
+                //------------------Mejorar Sistema de elecion de dar elecion de Mascota
                 //Tiene Mascota
                 if(principal.getTieneMascota()== true){
                     //Tiene una Mascota
@@ -156,9 +157,65 @@ public class Main {
             }
             //---------------Mirar Estadisticcas y mascotas -----------------------
             else if (Elecion.equals("c")) {
-                principal.VerEstadisticas();
-                System.out.println(principal.getTieneMascota());
-                System.out.println(principal.getMascotas());
+                //Elecion de que quiere Mirar
+                while (true) {
+                    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("a) Tus Estadisticas\nb)Volta\nc)Terre\nd)Acua");
+
+                    Elecion = myObj.nextLine();  // Read user input
+
+                    Elecion = Elecion.toLowerCase();
+                    //Mirar si el dato de entrada tiene sentido sino repite la ejecucion
+                    if (Elecion.equals("a") || Elecion.equals("b") || Elecion.equals("c") || Elecion.equals("d")) {
+                        break;
+                    } else {
+                        System.err.println("Error: No has elegido una opcion valida\n");
+
+                    }
+                }
+                // Segun la elecion que haga se mostraran una Estadiscticas u otras
+                if(Elecion.equals("a")){
+                    principal.VerEstadisticas();
+                }
+                else if(Elecion.equals("b")){
+                    //Booleano Que mira si el personaje principal tiene a la Mascota
+                    boolean EstaVolta = principal.getMascotas().contains(volta);
+                    //Si la tiene Muestra por pantalla sus Estadisticas
+                    if (EstaVolta == true){
+                        volta.VerEstadisticaVolador();
+                    }
+                    //Sino las tiene Muesta por pantalla un error
+                    else{
+                        System.err.println("No tienes a Volta en tu equipo");
+                    }
+                }
+                else if(Elecion.equals("c")){
+                    boolean EstaTerre = principal.getMascotas().contains(terre);
+                    if (EstaTerre == true){
+                        terre.VerEstadisticaVolador();
+                    }
+                    else{
+                        System.err.println("Usted no tiene a Terre en su equipo");
+                    }
+                }
+                else{
+                    boolean EstaAcua = principal.getMascotas().contains(acua);
+                    if (EstaAcua == true){
+                        acua.VerEstadisticaVolador();
+                    }
+                    else{
+                        System.err.println("Usted no tiene a Acua en su equipo");
+                    }
+                }
+            }
+            else if(Elecion.equals("e")){
+                System.out.print("Saliendo del Juego");
+                //Animacion de Salir del juego
+                for(int i = 0  ; i < 3; i++){
+                    TiempoEspera();
+                    System.out.print(".");
+                }
+                break;
             }
             //-------------- Entrenar --------------------------
             else {
@@ -171,11 +228,20 @@ public class Main {
                 principal.setEstamina(principal.getEstamina() + 1);
                 principal.setVelocidad(principal.getVelocidad() + 1);
                 principal.setLvL(principal.getLvL() + 1);
-                if (principal.getTieneMascota() == true){
-                    volta.setDañoMascota(volta.getDañoMascota() + 5);
-                    volta.setVidaMascota(volta.getVidaMascota() +10);
-
+                boolean EstaAcua = principal.getMascotas().contains(acua);
+                if (EstaAcua == true){
+                    acua.setVidaMascota(acua.getVidaMascota() + 100);
                 }
+                boolean EstaTerre = principal.getMascotas().contains(terre);
+                if (EstaTerre == true){
+                    terre.setVidaMascota(terre.getVidaMascota() + 50);
+                }
+                boolean EstaVolta = principal.getMascotas().contains(volta);
+                if (EstaVolta == true){
+                    volta.setVidaMascota(volta.getVidaMascota() + 10);
+                }
+
+
 
             }
     }
@@ -235,34 +301,63 @@ public class Main {
         }
 
     }
+
+//-------------------Mejorar Sistema de Pelea (29/04/2024)------------------------------------------------------------------------------------------
     // Matar Enemeigos
-    public static String MatarEnemigo(Malvados enemigo, MascotasPrincipal volta){
+    public static String MatarEnemigo(Malvados enemigo, MascotasPrincipal Mascota) {
         String Ganar = "You: Lo sabia no hay nadie en este mundo que pueda conmigo";
-        String Perder= "You: Vuelve aqui" + volta.getNombreMascota() + ", sino moriras!!!";
-        if(enemigo.getVelocidadMalvado() < volta.getVelocidadMascota()){
-            //Primer golpe
-            enemigo.setVidaMalvado(enemigo.getVidaMalvado() - volta.getDañoMascota());
-            if (enemigo.getVelocidadMalvado() <= 0){
-                return Ganar;
+        String Perder = "You: Vuelve aqui" + Mascota.getNombreMascota() + ", sino moriras!!!";
+        for (int i = 0; i < Mascota.getEstaminaMascota(); i++) {
+            Scanner myObj = new Scanner(System.in);
+            String Elecion = myObj.nextLine();
+            //Sistema de Pelea donde eligen los ataques
+            while (true) {
+                myObj = new Scanner(System.in);
+                // Creamos esl objeto escaner
+                System.out.println("Elige Ataque \na)" + Mascota.getAtaque1() + "b)" + Mascota.getAtaque2());
+                Elecion = myObj.nextLine();
+
+
+                Elecion = Elecion.toLowerCase();
+                //Mirar si el dato de entrada tiene sentido sino repite la ejecucion
+                if (Elecion.equals("a") || Elecion.equals("b")) {
+                    break;
+                } else {
+                    System.err.println("Error: No has elegido una opcion valida\n");
+
+                }
             }
-            //Segundo Golpe
-            volta.setVidaMascota(volta.getDañoMascota() - enemigo.getDañoMalvado());
-            if (volta.getVidaMascota() <= 0){
-                return Perder;
+            if (Elecion.equals("a")) {
+                Mascota.SonidoAtaque1();
+                enemigo.setVidaMalvado(enemigo.getVidaMalvado() - Mascota.getDañoMascota());
+                TiempoEspera();
+                //Aqui va el sonido de dolor del Malvado
+                if (enemigo.getVidaMalvado() <= 0) {
+                    return Ganar;
+                }
+                Mascota.setVidaMascota(Mascota.getVidaMascota() - enemigo.getDañoMalvado());
+                TiempoEspera();
+                Mascota.sonido();
+                if (Mascota.getVidaMascota() <= 0) {
+                    return Perder;
+                }
+            } else {
+                Mascota.SonidoAtaque2();
+                Mascota.setVidaMascota(Mascota.getVidaMascota() - enemigo.getDañoMalvado());
+                TiempoEspera();
+                Mascota.SonidoMascota();
+                if (Mascota.getVidaMascota() <= 0) {
+                    return Perder;
+                }
+                enemigo.setVidaMalvado(enemigo.getVidaMalvado() - Mascota.getDañoMascota() * 2);
+                TiempoEspera();
+                //Aqui va el sonido de dolor del Malvado
+                if (enemigo.getVidaMalvado() <= 0) {
+                    return Ganar;
+                }
             }
         }
-        else{
-            //Primer Golpe
-            volta.setVidaMascota(volta.getDañoMascota() - enemigo.getDañoMalvado());
-            if (volta.getVidaMascota() <= 0){
-                return Perder;
-            }
-            //Segundo golpe
-            enemigo.setVidaMalvado(enemigo.getVidaMalvado() - volta.getDañoMascota());
-            if (enemigo.getVelocidadMalvado() <= 0){
-                return Ganar;
-            }
-        }
+
         return Perder;
     }
 }

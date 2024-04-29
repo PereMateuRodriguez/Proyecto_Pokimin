@@ -5,6 +5,7 @@ public class Malvados {
     private int daño;
     private int velocidad;
 
+
     //Constructor
     public Malvados(int vida, int daño, int velocidad){
         this.velocidad = velocidad;

@@ -55,6 +55,7 @@ public class Personaje {
         System.out.println("Estamina  :" + this.getEstamina());
         System.out.println("Velocidad :" + this.getVelocidad());
         System.out.println("LvL       :" + this.getLvL());
+        System.out.println("Mascotas  :" + this.getMascotas());
     }
     public void SonidoDar(){
         System.out.println("You: Toma eso ha tenido que doler!!!");
