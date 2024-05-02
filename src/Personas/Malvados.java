@@ -13,7 +13,14 @@ public class Malvados {
         this.daño = daño;
     }
 
+    //Methodos
+    public void Sonido_daño(){
+        System.out.println("Devil: Ahhh, como duele ese bicho no es normal");
+    }
 
+    public void Sonido_pegar(){
+        System.out.println("Devil: Esa te ha dolio eh!!!");
+    }
 
 
     //GET y SET

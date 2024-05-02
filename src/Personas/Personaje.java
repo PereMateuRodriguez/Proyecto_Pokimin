@@ -46,6 +46,16 @@ public class Personaje {
     }
 
     //Metodos
+    //Subir LvL
+    public void SubirLvL(){
+        setVida(getVida() + 10);
+        setDaño(getDaño() + 5);
+        setEstamina(getEstamina() + 1);
+        setVelocidad(getVelocidad() + 1);
+        setLvL(getLvL() + 1);
+        VerEstadisticas();
+
+    }
 
     //Ver las estadisticas
     public void VerEstadisticas(){

@@ -7,7 +7,13 @@ public class Volador extends MascotasPrincipal{
         super(Nombre, vida, daño, estamina, velocidad * 2, LvL, Ataque1, Ataque2);
     }
     //El ataque 1 es una ataque mas rapido pero que gasta poca energia e hace poco daño
-
+    public void SubirLvL(){
+        setVidaMascota(getVidaMascota() + 10);
+        setDañoMascota(getDañoMascota() + 1);
+        setLvLMascota(getLvLMascota() + 1);
+        setVelocidadMascota(getVelocidadMascota() + 5);
+        VerEstadisticaVolador();
+    }
 
     public void VerEstadisticaVolador(){
         System.out.println("Las estadistas de " + getNombreMascota()+ "son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );

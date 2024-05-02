@@ -19,7 +19,7 @@ public class Main {
         Terrestre terre = new Terrestre("Terre", 150, 50, 3, 1, 5, "Ataque Latigo", "Raizes Duras");
         Acuatico acua = new Acuatico("Acua", 1000, 100, 200, 100, 100, "Chorro Presion", "Cascada de HydroMuertos");
         //Instanciamos al enemigo
-        Malvados enemigo = new Malvados(150, 50, 15 );
+        Malvados enemigo = new Malvados(1500, 5, 15 );
         while (true) {
             //Nivel en el que se encuentra nuestro Personaje
             int LVL = 0;
@@ -219,33 +219,63 @@ public class Main {
             }
             //-------------- Entrenar --------------------------
             else {
-
                 System.out.println("Entrenado...");
                 //TiempoEspera();
-                //TiempoEspera();
-                principal.setDaño(principal.getDaño() + 5);
-                principal.setVida(principal.getVida() + 10);
-                principal.setEstamina(principal.getEstamina() + 1);
-                principal.setVelocidad(principal.getVelocidad() + 1);
-                principal.setLvL(principal.getLvL() + 1);
-                boolean EstaAcua = principal.getMascotas().contains(acua);
-                if (EstaAcua == true){
-                    acua.setVidaMascota(acua.getVidaMascota() + 100);
-                }
-                boolean EstaTerre = principal.getMascotas().contains(terre);
-                if (EstaTerre == true){
-                    terre.setVidaMascota(terre.getVidaMascota() + 50);
-                }
-                boolean EstaVolta = principal.getMascotas().contains(volta);
-                if (EstaVolta == true){
-                    volta.setVidaMascota(volta.getVidaMascota() + 10);
+                //Sistema de elecion de quien a entrenar
+                String Aquien;
+                while(true){
+                    Scanner myObj = new Scanner(System.in);  // Creamos esl objeto escaner
+                    System.out.println("A quien quires entrenar \na)A ti mismo\nb)Volta\nc)Terre\nd)Acua");
+
+                    Aquien = myObj.nextLine();
+
+                    Aquien = Aquien.toLowerCase();
+                    //Mirar si el dato de entrada tiene sentido sino repite la ejecucion
+                    if (Aquien.equals("a") || Aquien.equals("b") || Aquien.equals("c") || Aquien.equals("d")) {
+                        if (Aquien.equals("a")){
+                            System.out.println("Entrenando...");
+                            //Aqui vendra una pausa de 10 segundos
+                            //Elecion de que quiere mejorar
+                            principal.SubirLvL();
+                            break;
+                        }
+                        //Si elegie a VOLTA y lo tiene
+                        else if (Aquien.equals("b") && principal.getMascotas().contains(volta) == true){
+                            System.out.println("Entrenando... VOlta");
+                            volta.SubirLvL();
+                            break;
+                        }
+                        //Si elige a TERRE y lo tiene
+                        else if (Aquien.equals("c") && principal.getMascotas().contains(terre) == true){
+                            System.out.println("Entrenando... Terre");
+                            terre.SubirLvL();
+                            break;
+                        }
+                        else if(Aquien.equals("d") && principal.getMascotas().contains(acua) == true){
+                            System.out.println("Entrenando... Acua");
+                            acua.SubirLvL();
+                            break;
+                        }
+
+                        else {
+                            System.err.println("Error: No tienes esta mascota\n");
+
+                        }
+                    }
+                    else {
+                        System.err.println("Error: No has elegido una opcion valida\n");
+
+                    }
                 }
 
 
 
             }
+
+
+        }
     }
- }
+
  //Batalla con Una Mascota
     public static boolean QuienHaMuerto(Personaje Principal, MascotasPrincipal Volta){
         for(int i = Principal.getEstamina(); i > 0 ; i--){
@@ -308,13 +338,13 @@ public class Main {
         String Ganar = "You: Lo sabia no hay nadie en este mundo que pueda conmigo";
         String Perder = "You: Vuelve aqui" + Mascota.getNombreMascota() + ", sino moriras!!!";
         for (int i = 0; i < Mascota.getEstaminaMascota(); i++) {
-            Scanner myObj = new Scanner(System.in);
-            String Elecion = myObj.nextLine();
+            String Elecion;
             //Sistema de Pelea donde eligen los ataques
             while (true) {
+                Scanner myObj = new Scanner(System.in);
                 myObj = new Scanner(System.in);
                 // Creamos esl objeto escaner
-                System.out.println("Elige Ataque \na)" + Mascota.getAtaque1() + "b)" + Mascota.getAtaque2());
+                System.out.println("Eliga el Ataque: \na)" + Mascota.getAtaque1() + "\nb)" + Mascota.getAtaque2());
                 Elecion = myObj.nextLine();
 
 
@@ -327,29 +357,36 @@ public class Main {
 
                 }
             }
+            //Pelea
             if (Elecion.equals("a")) {
                 Mascota.SonidoAtaque1();
                 enemigo.setVidaMalvado(enemigo.getVidaMalvado() - Mascota.getDañoMascota());
                 TiempoEspera();
+                enemigo.Sonido_daño();
                 //Aqui va el sonido de dolor del Malvado
                 if (enemigo.getVidaMalvado() <= 0) {
                     return Ganar;
                 }
                 Mascota.setVidaMascota(Mascota.getVidaMascota() - enemigo.getDañoMalvado());
-                TiempoEspera();
+
                 Mascota.sonido();
+                TiempoEspera();
+                enemigo.Sonido_pegar();
                 if (Mascota.getVidaMascota() <= 0) {
                     return Perder;
                 }
             } else {
+
                 Mascota.SonidoAtaque2();
                 Mascota.setVidaMascota(Mascota.getVidaMascota() - enemigo.getDañoMalvado());
+                enemigo.Sonido_pegar();
                 TiempoEspera();
                 Mascota.SonidoMascota();
                 if (Mascota.getVidaMascota() <= 0) {
                     return Perder;
                 }
                 enemigo.setVidaMalvado(enemigo.getVidaMalvado() - Mascota.getDañoMascota() * 2);
+                enemigo.Sonido_daño();
                 TiempoEspera();
                 //Aqui va el sonido de dolor del Malvado
                 if (enemigo.getVidaMalvado() <= 0) {
