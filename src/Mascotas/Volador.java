@@ -1,6 +1,12 @@
 package Mascotas;
 
+import Materiales.PiedraVolador;
+
+import java.util.ArrayList;
+
 public class Volador extends MascotasPrincipal{
+
+    ArrayList <PiedraVolador> Piedras = new ArrayList<PiedraVolador>();
 
     //Constructor
     public Volador(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2) {
@@ -14,6 +20,12 @@ public class Volador extends MascotasPrincipal{
         setVelocidadMascota(getVelocidadMascota() + 5);
         VerEstadisticaVolador();
     }
+    //AñadorPiedras
+    public void AñadirPiedras(PiedraVolador p){
+        System.out.println("Añadiendo la piedras al Volta");
+        Piedras.add(p);
+    }
+
 
     public void VerEstadisticaVolador(){
         System.out.println("Las estadistas de " + getNombreMascota()+ "son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );
@@ -39,4 +51,5 @@ public class Volador extends MascotasPrincipal{
         System.out.println("You: Volta Ala de Acero!!!");
     }
     }
+
 

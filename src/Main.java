@@ -1,5 +1,6 @@
 import Mascotas.MascotasPrincipal;
 import Mascotas.*;
+import Materiales.PiedraVolador;
 import Personas.Malvados;
 import Personas.Personaje;
 
