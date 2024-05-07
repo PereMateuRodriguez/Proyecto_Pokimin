@@ -26,10 +26,7 @@ public class Malvados {
         System.out.println("Devil: Esa te ha dolio eh!!!");
     }
     //Dar piedra por haber perdido
-    public void PerderVolta(Volador volta, PiedraVolador p){
-        volta.AñadirPiedras(p);
 
-    }
 
 
     //GET y SET

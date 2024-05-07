@@ -22,20 +22,24 @@ public class Volador extends MascotasPrincipal{
         VerEstadisticaVolador();
     }
     //AñadorPiedras
-    public void AñadirPiedras(PiedraVolador p){
+    public void AñadirPiedras(PiedraVolador p, Volador m){
         p.SonidoAñardirPiedra();
-        TienePiedraVoladora = true;
+        m.setTienePiedras(true);
         p.setUso(p.getUso() + 1);
     }
     //Miramos que la piedra de volta tenga usos Sino tiene le metemos el valor False
-    public void NoTienePiedras(PiedraVolador p){
+    public void NoTienePiedras(PiedraVolador p, Volador m){
         if (p.CuantoUso() == false ){
-            TienePiedraVoladora = false;
+            m.setTienePiedras(false);
         }
     }
     //Set de piedras
-    public boolean setTienePiedras(){
+    public boolean getTienePiedras(){
         return TienePiedraVoladora;
+    }
+    //Get De piedras
+    public void setTienePiedras(boolean Piedras){
+        this.TienePiedraVoladora = Piedras;
     }
 
     public void VerEstadisticaVolador(){

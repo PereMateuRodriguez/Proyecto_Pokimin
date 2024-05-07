@@ -1,8 +1,12 @@
 package Mascotas;
 
+import Materiales.PiedraAcuatico;
+
 public class Acuatico extends MascotasPrincipal{
-    public Acuatico(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2) {
+    private boolean TienePiedrasAcuaticas;
+    public Acuatico(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2, boolean TienePiedrasAcuaticas) {
         super(Nombre, vida, daño, estamina, velocidad, LvL, Ataque1, Ataque2);
+        this.TienePiedrasAcuaticas = TienePiedrasAcuaticas;
     }
     public void SubirLvL(){
         setVidaMascota(getVidaMascota() + 100);
@@ -10,6 +14,19 @@ public class Acuatico extends MascotasPrincipal{
         setLvLMascota(getLvLMascota() + 1);
         setVelocidadMascota(getVelocidadMascota() + 2);
         VerEstadisticaVolador();
+    }
+    //Metodos
+    public void AñadirPiedrasAcuataticas(PiedraAcuatico p, Acuatico m){
+        p.SonidoAñadirPiedra();
+        m.setTienePiedrasAcuaticas(true);
+        p.setPoder(p.getPoder()+1);
+    }
+    //Get y set
+    public boolean getTienePiedrasAcuaticas(){
+        return TienePiedrasAcuaticas;
+    }
+    public void setTienePiedrasAcuaticas(boolean TienePiedrasAcuaticas){
+        this.TienePiedrasAcuaticas = TienePiedrasAcuaticas;
     }
     public void VerEstadisticaVolador(){
         System.out.println("Las estadistas de " + getNombreMascota()+ "son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );

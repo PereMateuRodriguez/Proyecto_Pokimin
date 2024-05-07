@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-05-07T14:23:30.624Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="MN6_YpKLeYqb-560szjg" version="24.2.5" type="device">
+<mxfile host="Electron" modified="2024-05-07T16:08:11.657Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="nniuuww9w4uxvj3VNu5C" version="24.2.5" type="device">
   <diagram name="Página-1" id="7zkVyTDvdfj_mSpwI1TV">
-    <mxGraphModel dx="526" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="704" dy="495" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -134,7 +134,7 @@
           <mxGeometry y="158" width="160" height="70" as="geometry" />
         </mxCell>
         <mxCell id="8Huzl1lIxEy7IDUvFNa8-41" value="Acuatico" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="400" y="920" width="160" height="140" as="geometry" />
+          <mxGeometry x="400" y="920" width="160" height="170" as="geometry" />
         </mxCell>
         <mxCell id="8Huzl1lIxEy7IDUvFNa8-42" value="&lt;b&gt;&lt;i&gt;&lt;u&gt;&amp;nbsp;- ListadoPiedrasAgua&lt;/u&gt;&lt;/i&gt;&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8Huzl1lIxEy7IDUvFNa8-41" vertex="1">
           <mxGeometry y="26" width="160" height="26" as="geometry" />
@@ -142,8 +142,8 @@
         <mxCell id="8Huzl1lIxEy7IDUvFNa8-43" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="8Huzl1lIxEy7IDUvFNa8-41" vertex="1">
           <mxGeometry y="52" width="160" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="8Huzl1lIxEy7IDUvFNa8-44" value="+ Sonido&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoMascota&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoAtaque1&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoAtaque2&lt;br&gt;+ VerEstadistica" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8Huzl1lIxEy7IDUvFNa8-41" vertex="1">
-          <mxGeometry y="60" width="160" height="80" as="geometry" />
+        <mxCell id="8Huzl1lIxEy7IDUvFNa8-44" value="+ Sonido&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoMascota&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoAtaque1&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ SonidoAtaque2&lt;br&gt;+ VerEstadistica&lt;div&gt;+ AñadirPiedrasAcuaticas&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8Huzl1lIxEy7IDUvFNa8-41" vertex="1">
+          <mxGeometry y="60" width="160" height="110" as="geometry" />
         </mxCell>
         <mxCell id="8Huzl1lIxEy7IDUvFNa8-45" value="Terrestre" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="920" width="160" height="230" as="geometry" />
@@ -296,16 +296,16 @@
           <mxGeometry y="60" width="170" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LW-K9nEIP4E9QOKwslH8-30" value="PiedraAcuatica" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="800" width="160" height="110" as="geometry" />
+          <mxGeometry x="1480" y="800" width="180" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="LW-K9nEIP4E9QOKwslH8-31" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="LW-K9nEIP4E9QOKwslH8-30" vertex="1">
-          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        <mxCell id="LW-K9nEIP4E9QOKwslH8-31" value="&lt;div&gt;+ Poder&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="LW-K9nEIP4E9QOKwslH8-30" vertex="1">
+          <mxGeometry y="26" width="180" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LW-K9nEIP4E9QOKwslH8-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="LW-K9nEIP4E9QOKwslH8-30" vertex="1">
-          <mxGeometry y="52" width="160" height="8" as="geometry" />
+          <mxGeometry y="52" width="180" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LW-K9nEIP4E9QOKwslH8-33" value="+ Pegar&lt;div&gt;+ Curar&lt;/div&gt;&lt;div&gt;+Uir&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="LW-K9nEIP4E9QOKwslH8-30" vertex="1">
-          <mxGeometry y="60" width="160" height="50" as="geometry" />
+        <mxCell id="LW-K9nEIP4E9QOKwslH8-33" value="+ Pegar&lt;div&gt;+ Curar&lt;/div&gt;&lt;div&gt;+SonidoAñadirPiedraAcuatica&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="LW-K9nEIP4E9QOKwslH8-30" vertex="1">
+          <mxGeometry y="60" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="LW-K9nEIP4E9QOKwslH8-34" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;entryX=0.181;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="LW-K9nEIP4E9QOKwslH8-18" target="LW-K9nEIP4E9QOKwslH8-17" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
