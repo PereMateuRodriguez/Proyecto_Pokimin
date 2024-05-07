@@ -6,11 +6,12 @@ import java.util.ArrayList;
 
 public class Volador extends MascotasPrincipal{
 
-    ArrayList <PiedraVolador> Piedras = new ArrayList<PiedraVolador>();
+    private boolean TienePiedraVoladora;
 
     //Constructor
-    public Volador(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2) {
+    public Volador(String Nombre, int vida, int daño, int estamina, int velocidad, int LvL, String Ataque1, String Ataque2, boolean TienePiedraVoladora) {
         super(Nombre, vida, daño, estamina, velocidad * 2, LvL, Ataque1, Ataque2);
+        this.TienePiedraVoladora = TienePiedraVoladora;
     }
     //El ataque 1 es una ataque mas rapido pero que gasta poca energia e hace poco daño
     public void SubirLvL(){
@@ -22,10 +23,20 @@ public class Volador extends MascotasPrincipal{
     }
     //AñadorPiedras
     public void AñadirPiedras(PiedraVolador p){
-        System.out.println("Añadiendo la piedras al Volta");
-        Piedras.add(p);
+        p.SonidoAñardirPiedra();
+        TienePiedraVoladora = true;
+        p.setUso(p.getUso() + 1);
     }
-
+    //Miramos que la piedra de volta tenga usos Sino tiene le metemos el valor False
+    public void NoTienePiedras(PiedraVolador p){
+        if (p.CuantoUso() == false ){
+            TienePiedraVoladora = false;
+        }
+    }
+    //Set de piedras
+    public boolean setTienePiedras(){
+        return TienePiedraVoladora;
+    }
 
     public void VerEstadisticaVolador(){
         System.out.println("Las estadistas de " + getNombreMascota()+ "son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );

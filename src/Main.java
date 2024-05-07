@@ -1,6 +1,7 @@
 import Mascotas.MascotasPrincipal;
 import Mascotas.*;
 import Materiales.PiedraVolador;
+import Materiales.PiedrasMagicas;
 import Personas.Malvados;
 import Personas.Personaje;
 
@@ -16,11 +17,13 @@ public class Main {
         //Instanciamos el Personaje Principal
         Personaje principal = new Personaje(100, 5, 10, 2,1);
         //instanciamos las mascotas
-        Volador volta = new Volador("Volta", 50, 5, 5, 10, 1, "Ataque Rapido" , "Ala de Acero");
+        Volador volta = new Volador("Volta", 50, 5, 5, 10, 1, "Ataque Rapido" , "Ala de Acero", false);
         Terrestre terre = new Terrestre("Terre", 150, 50, 3, 1, 5, "Ataque Latigo", "Raizes Duras");
         Acuatico acua = new Acuatico("Acua", 1000, 100, 200, 100, 100, "Chorro Presion", "Cascada de HydroMuertos");
         //Instanciamos al enemigo
         Malvados enemigo = new Malvados(1500, 5, 15 );
+        //Instacioamos Pidras
+        PiedraVolador PiedraVolta = new PiedraVolador(1);
         while (true) {
             //Nivel en el que se encuentra nuestro Personaje
             int LVL = 0;
@@ -54,12 +57,22 @@ public class Main {
                 if(principal.getTieneMascota()== true){
                     //Tiene una Mascota
                     if(principal.getMascotas().size() == 1){
+                        if(volta.setTienePiedras()){
+                            PiedraVolta.Curar(volta);
+                            PiedraVolta.Pegar(volta);
+                        }
                         System.out.println(MatarEnemigo(enemigo,volta));
                     }
                     //Tiene 2 Mascotas
                     else if (principal.getMascotas().size() == 2 ){
                         //Volta tiene mas LvL
                         if (volta.getLvLMascota() > terre.getLvLMascota()){
+                            //Miramos que tenga una piedra
+                            if(volta.setTienePiedras()){
+                                //Utilizamos la piedra
+                                PiedraVolta.Curar(volta);
+                                PiedraVolta.Pegar(volta);
+                            }
                             System.out.println(MatarEnemigo(enemigo,volta));
                         }
                         //Terre Tiene mas LvL
@@ -73,6 +86,11 @@ public class Main {
                         //Volta Tiene Mas LvL
                         if (volta.getLvLMascota() > terre.getLvLMascota() && volta.getLvLMascota() > acua.getLvLMascota()
                         ){
+                            //Si Volta Tiene Piedras se ultizan
+                            if(volta.setTienePiedras()){
+                                PiedraVolta.Curar(volta);
+                                PiedraVolta.Pegar(volta);
+                            }
                             System.out.println(MatarEnemigo(enemigo,volta));
                         }
                         //Terre Tiene Mas LvL
@@ -243,6 +261,7 @@ public class Main {
                         //Si elegie a VOLTA y lo tiene
                         else if (Aquien.equals("b") && principal.getMascotas().contains(volta) == true){
                             System.out.println("Entrenando... VOlta");
+                            volta.AñadirPiedras(PiedraVolta);
                             volta.SubirLvL();
                             break;
                         }
@@ -272,7 +291,8 @@ public class Main {
 
 
             }
-
+        //Si a la mascota No le quedan Piedras La damos como false
+            volta.NoTienePiedras(PiedraVolta);
 
         }
     }

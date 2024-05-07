@@ -1,5 +1,9 @@
 package Personas;
 
+import Mascotas.MascotasPrincipal;
+import Mascotas.Volador;
+import Materiales.PiedraVolador;
+
 public class Malvados {
     private int vida;
     private int daño;
@@ -20,6 +24,11 @@ public class Malvados {
 
     public void Sonido_pegar(){
         System.out.println("Devil: Esa te ha dolio eh!!!");
+    }
+    //Dar piedra por haber perdido
+    public void PerderVolta(Volador volta, PiedraVolador p){
+        volta.AñadirPiedras(p);
+
     }
 
 

@@ -19,6 +19,10 @@ public class PiedraVolador implements PiedrasMagicas{
             return true;
         }
     }
+    //Sonido de Piedra
+    public void SonidoAñardirPiedra(){
+        System.out.println("Añadiendo la piedra Voladora!");
+    }
     @Override
     public void Pegar(MascotasPrincipal m) {
         m.setDañoMascota(m.getDañoMascota() + 20);

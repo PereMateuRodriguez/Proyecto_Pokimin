@@ -31,4 +31,5 @@ public class PiedraAcuatico implements PiedrasMagicas {
         m.setVidaMascota(1000);
         setUso(getUso()-1);
     }
+
 }
