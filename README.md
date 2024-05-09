@@ -1,4 +1,4 @@
-# Nombre del Proyecto: Aventuras de Mascotas
+# Nombre del Proyecto: Aventuras con Animales Fantasticos
 
 ## Descripción: 
 Desarrollar un juego de aventuras donde el jugador controle un Personaje Principal acompañado de una Mascota, enfrentándose a Enemigos y capturando nuevas Mascotas para entrenarlas y mejorar sus habilidades. El juego incluirá la gestión de Piedras mágicas que potencian las estadísticas de las Mascotas y se activan durante los combates.
