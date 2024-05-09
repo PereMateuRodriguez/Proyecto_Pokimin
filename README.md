@@ -44,5 +44,6 @@ Desarrollar un juego de aventuras donde el jugador controle un Personaje Princip
    - Solo se podrá atacar a un Enemigo si se tiene una Mascota disponible y siempre que tenga una piedra se activará automáticamente.
    - Una Mascota solo se podrá capturar enfrentándola en combate cuerpo a cuerpo con el Personaje Principal.
 
+![Diagrama.png](src%2FDiagrama.png)
 ## Nota:
 Este proyecto requerirá una planificación cuidadosa y una implementación modular para gestionar adecuadamente las relaciones entre Personajes, Mascotas, Piedras y Combates. ¡Buena suerte!
