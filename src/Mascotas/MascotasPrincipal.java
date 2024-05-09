@@ -26,7 +26,6 @@ abstract public class MascotasPrincipal {
 
     //Metodos
 
-    //VER Estadistica
     abstract public void sonido();
     //Sonido
     abstract public void SonidoMascota();
