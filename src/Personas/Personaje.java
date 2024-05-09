@@ -1,6 +1,9 @@
 package Personas;
 
+import Mascotas.Acuatico;
 import Mascotas.MascotasPrincipal;
+import Mascotas.Terrestre;
+import Mascotas.Volador;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -53,19 +56,41 @@ public class Personaje {
         setEstamina(getEstamina() + 1);
         setVelocidad(getVelocidad() + 1);
         setLvL(getLvL() + 1);
-        VerEstadisticas();
 
+
+    }
+    //Eliminar una mascota
+    public void EliminarMascotas(MascotasPrincipal M){
+        Mascotas.remove(M);
+    }
+    public void TieneMascotas(){
+        if(Mascotas.size() == 0){
+            this.tieneMascota = false;
+        }
     }
 
     //Ver las estadisticas
-    public void VerEstadisticas(){
+    public void VerEstadisticas(Volador volta, Terrestre terre, Acuatico acua){
         System.out.println("Tus estadisticas son: \n");
         System.out.println("Vida      :" + this.getVida());
         System.out.println("Daño      :" + this.getDaño());
         System.out.println("Estamina  :" + this.getEstamina());
         System.out.println("Velocidad :" + this.getVelocidad());
         System.out.println("LvL       :" + this.getLvL());
-        System.out.println("Mascotas  :" + this.getMascotas());
+        System.out.print("Mascotas  :");
+        if ( Mascotas.contains(volta) == true){
+            System.out.println("    - "+acua.getNombreMascota());
+        }
+        if (Mascotas.contains(terre) == true){
+
+            System.out.println("    - "+terre.getNombreMascota());
+        }
+        if (Mascotas.contains(acua) == true){
+
+            System.out.println("    - "+acua.getNombreMascota());
+        }
+
+
     }
     public void SonidoDar(){
         System.out.println("You: Toma eso ha tenido que doler!!!");

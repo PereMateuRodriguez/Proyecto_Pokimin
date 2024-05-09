@@ -43,7 +43,7 @@ public class Volador extends MascotasPrincipal{
     }
 
     public void VerEstadisticaVolador(){
-        System.out.println("Las estadistas de " + getNombreMascota()+ "son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );
+        System.out.println("Las estadistas de " + getNombreMascota()+ " son:\n" + "Vida     :" + getVidaMascota() + "\nDaño     :" + getDañoMascota() + "\nEstamina :" + getEstaminaMascota() +"\nVelocidad:"  + getVelocidadMascota() + "\nLvL      :" + getLvLMascota() );
     }
     @Override
     public void sonido() {

@@ -65,7 +65,7 @@ public class Main {
                             PiedraVolta.Curar(volta);
                             PiedraVolta.Pegar(volta);
                         }
-                        System.out.println(MatarEnemigo(enemigo,volta));
+                        System.out.println(MatarEnemigo(enemigo,volta,principal));
                     }
                     //Tiene 2 Mascotas
                     else if (principal.getMascotas().size() == 2 ){
@@ -77,7 +77,7 @@ public class Main {
                                 PiedraVolta.Curar(volta);
                                 PiedraVolta.Pegar(volta);
                             }
-                            System.out.println(MatarEnemigo(enemigo,volta));
+                            System.out.println(MatarEnemigo(enemigo,volta,principal));
                         }
                         //Terre Tiene mas LvL
                         else{
@@ -91,7 +91,7 @@ public class Main {
                                 PiedraTerre.Pegar(terre);
                                 PiedraTerre.Multiplicarse(terre);
                             }
-                            System.out.println(MatarEnemigo(enemigo,terre));
+                            System.out.println(MatarEnemigo(enemigo,terre,principal));
                         }
 
                     }
@@ -105,7 +105,7 @@ public class Main {
                                 PiedraVolta.Curar(volta);
                                 PiedraVolta.Pegar(volta);
                             }
-                            System.out.println(MatarEnemigo(enemigo,volta));
+                            System.out.println(MatarEnemigo(enemigo,volta,principal));
                         }
                         //Terre Tiene Mas LvL
                         else if(terre.getLvLMascota() > volta.getLvLMascota() && terre.getLvLMascota() > acua.getLvLMascota()){
@@ -118,14 +118,14 @@ public class Main {
                                 PiedraTerre.Pegar(terre);
                                 PiedraTerre.Multiplicarse(terre);
                             }
-                            System.out.println(MatarEnemigo(enemigo,terre));
+                            System.out.println(MatarEnemigo(enemigo,terre,principal));
                         }
                         //Acua Tiene Mas LvL
                         else{
                             if (acua.getTienePiedrasAcuaticas()){
                                 PiedraAcua.PoderCurarPegar(acua, PiedraAcua);
                             }
-                            System.out.println(MatarEnemigo(enemigo,acua));
+                            System.out.println(MatarEnemigo(enemigo,acua, principal));
                         }
                     }
                 }
@@ -143,7 +143,7 @@ public class Main {
                         principal.SonidoGanar();
                         // Elegir si quiere capturarlo
                         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-                        System.out.println("Quieres Capturar a la Volat? \n a) SI \nCualquier otro valor) No");
+                        System.out.println("Quieres Capturar a la Volta? \n a) SI \nCualquier otro valor) No");
 
                         Elecion = myObj.nextLine();  // Read user input
 
@@ -220,7 +220,7 @@ public class Main {
                 }
                 // Segun la elecion que haga se mostraran una Estadiscticas u otras
                 if(Elecion.equals("a")){
-                    principal.VerEstadisticas();
+                    principal.VerEstadisticas(volta, terre, acua);
                 }
                 else if(Elecion.equals("b")){
                     //Booleano Que mira si el personaje principal tiene a la Mascota
@@ -286,7 +286,7 @@ public class Main {
                         }
                         //Si elegie a VOLTA y lo tiene
                         else if (Aquien.equals("b") && principal.getMascotas().contains(volta) == true){
-                            System.out.println("Entrenando... VOlta");
+                            System.out.println("Entrenando... Volta");
                             volta.AñadirPiedras(PiedraVolta, volta);
                             volta.SubirLvL();
                             break;
@@ -326,7 +326,8 @@ public class Main {
             terre.NotienePiedrasVoladoras(PiedraVolta, terre);
             // Piedras Terretsres ponerlo en false el atributo
             terre.NotienePiedrasTerretres(PiedraTerre, terre);
-
+            //Miramos si tiene Mascotas sino las tiene le pones el valor False
+            principal.TieneMascotas();
         }
     }
 
@@ -388,9 +389,9 @@ public class Main {
 
 //-------------------Mejorar Sistema de Pelea (29/04/2024)------------------------------------------------------------------------------------------
     // Matar Enemeigos
-    public static String MatarEnemigo(Malvados enemigo, MascotasPrincipal Mascota) {
+    public static String MatarEnemigo(Malvados enemigo, MascotasPrincipal Mascota, Personaje Principal ) {
         String Ganar = "You: Lo sabia no hay nadie en este mundo que pueda conmigo";
-        String Perder = "You: Vuelve aqui" + Mascota.getNombreMascota() + ", sino moriras!!!";
+        String Perder = "You: Me las pagaras por matar " + Mascota.getNombreMascota() + "!!!";
         for (int i = 0; i < Mascota.getEstaminaMascota(); i++) {
             String Elecion;
             //Sistema de Pelea donde eligen los ataques
@@ -420,6 +421,7 @@ public class Main {
                 //Aqui va el sonido de dolor del Malvado
                 if (enemigo.getVidaMalvado() <= 0) {
                     return Ganar;
+
                 }
                 Mascota.setVidaMascota(Mascota.getVidaMascota() - enemigo.getDañoMalvado());
 
@@ -427,7 +429,9 @@ public class Main {
                 TiempoEspera();
                 enemigo.Sonido_pegar();
                 if (Mascota.getVidaMascota() <= 0) {
+                    Principal.EliminarMascotas(Mascota);
                     return Perder;
+
                 }
             } else {
 
@@ -437,6 +441,8 @@ public class Main {
                 TiempoEspera();
                 Mascota.SonidoMascota();
                 if (Mascota.getVidaMascota() <= 0) {
+                    Principal.EliminarMascotas(Mascota);
+
                     return Perder;
                 }
                 enemigo.setVidaMalvado(enemigo.getVidaMalvado() - Mascota.getDañoMascota() * 2);
@@ -449,7 +455,7 @@ public class Main {
             }
         }
 
-        return Perder;
+        return Ganar;
     }
 }
 
